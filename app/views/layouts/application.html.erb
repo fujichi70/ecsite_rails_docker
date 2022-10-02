@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myapp</title>
+    <title>F Organic</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,40 @@
   </head>
 
   <body>
+    <header id="header">
+      <div><%= image_tag 'logo.png' %></div>
+      <nav>
+        <ul class="pc-menu--parts">
+          <li class="pc-menu--list"><a href="/">home<span class="pc-menu--ja">トップページ</span></a></li>
+          <li class="pc-menu--list"><a href="/concept">concept<span class="pc-menu--ja">コンセプト</span></a></li>
+          <li class="pc-menu--list"><a href="/products">products<span class="pc-menu--ja">商品一覧</span></a></li>
+          <li class="pc-menu--list"><a href="/contact">contact<span class="pc-menu--ja">お問い合わせ</span></a></li>
+          <li class="pc-menu--list order-nav"><a href="/order">online shop</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <main class="main-visual">
+      <%= yield :image %>
+    </main>
+  
     <%= yield %>
+
+    <footer id="footer">
+      <div class="footer-menu--box">
+        <ul class="footer-menu--parts">
+          <li class="footer-menu--list">HOME</li>
+          <li class="footer-menu--list">CONCEPT</li>
+          <li class="footer-menu--list">PRODUCTS</li>
+          <li class="footer-menu--list">CONTACT</li>
+        </ul>
+      </div>
+			<h1 class="footer-title">F Organic</h1>
+		<p class="footer-copyright">Copyright © F Organic All Rights Reserved.</p>
+    </footer>
+
   </body>
 </html>
