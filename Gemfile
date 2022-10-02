@@ -27,6 +27,17 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# 暗号化
+gem "bcrypt"
+
+# ログイン機能
+gem "devise"
+
+#devise日本語化
+gem 'devise-i18n'
+
+gem 'action_args'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
