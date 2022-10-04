@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Manages</h1>
+
+<div id="admins_manages">
+  <% @admins_manages.each do |admins_manage| %>
+    <%= render admins_manage %>
+    <p>
+      <%= link_to "Show this manage", admins_manage %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New manage", new_admins_manage_path %>
