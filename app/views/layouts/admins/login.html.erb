@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>F Organic</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <header>
+      <% if admin_signed_in? %>
+        <div class="header-box">
+          <h1 class="top-title">管理者画面</h1>
+          <nav>
+            <ul class="header-menu">
+              <li class="header-menu--list"><a href="/">ホーム</a></li>
+              <%# <li class="header-menu--list"><a href="dones" data-turbo=false>Done List</a></li> %>
+            </ul>
+          </nav>
+        </div>
+        <div class="user-action">
+            <%= link_to 'Logout', 
+              destroy_admin_session_path,
+              class: 'logout',
+              method: :delete
+            %>
+        </div>
+    <% end %>
+    </header>
+
+  <% if notice %>
+    	<p class="notice"><%= notice %></p>
+	<% end %>
+	<% if alert %>
+    	<p class="alert"><%= alert %></p>
+	<% end %>
+ 
+	
+    <%= yield %>
+  </body>
+</html>
