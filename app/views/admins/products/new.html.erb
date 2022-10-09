@@ -1,9 +1,42 @@
 <h1>New product</h1>
 
-<%= render "form", admins_product: @admins_product %>
+<% if @admins_product.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@admins_product.errors.count, "") %>つの以下エラーがありますのでご確認をお願いいたします。</h2>
 
-<br>
+      <ul>
+        <% @admins_product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
 
 <div>
-  <%= link_to "Back to products", admins_products_path %>
+  <%= form_with url: admins_products_path do |form| %>
+  <div>
+        <%= form.label :商品名 %>
+        <%= form.text_field :product, autofocus: true, class: "input-area" %>
+    </div>
+    <div>
+        <%= form.label :商品説明 %>
+        <%= form.text_field :product_description, autofocus: true, class: "input-area" %>
+    </div>
+    <div>
+        <%= form.label :商品価格 %>
+        <%= form.text_field :product_price, autofocus: true, class: "input-area" %>
+    </div>
+    <div>
+        <%= form.label :商品在庫 %>
+        <%= form.text_field :product_quantity, autofocus: true, class: "input-area" %>
+    </div>
+    <div class="btn-box">
+      <%= form.submit "登録する", class: "btn" %>
+    </div>
+  <% end %>
+</div>
+
+
+<div class="btn-box">
+  <%= link_to "商品一覧に戻る", admins_products_path, class: "btn back-btn" %>
 </div>

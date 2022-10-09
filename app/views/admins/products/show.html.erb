@@ -3,8 +3,30 @@
 <%= render @admins_product %>
 
 <div>
-  <%= link_to "Edit this product", edit_admins_product_path(@admins_product) %> |
-  <%= link_to "Back to products", admins_products_path %>
+  <table>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>商品説明</th>
+            <th>商品価格</th>
+            <th>商品在庫数</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @admins_product.product %></td>
+            <td><%= @admins_product.product_description %></td>
+            <td class="unit"><%= number_to_currency(@admins_product.product_price, unit: "¥", format: "%u %n") %></td>
+            <td class="unit"><%= @admins_product.product_quantity %><span class="quantity-unit">個</span></td>
+            <td><%= link_to "編集", edit_admins_product_path(@admins_product), class: "btn" %></td>
+            <td><%= button_to "削除", @admins_products, method: :delete, remote:true, data: { turbo: false, confirm: "本当に削除しますか？" }, class: "btn delete-btn" %></td>
+          </tr>
+        </body>
+  </table>
 
-  <%= button_to "Destroy this product", @admins_product, method: :delete %>
+  <div class="btn-box">
+    <%= link_to "商品一覧に戻る", admins_products_path, class: "btn back-btn" %>
+  </div>
 </div>

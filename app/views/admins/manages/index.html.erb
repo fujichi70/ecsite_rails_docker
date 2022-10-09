@@ -1,14 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Manages</h1>
+<h1 class="manage-title">管理者画面</h1>
 
-<div id="admins_manages">
-  <% @admins_manages.each do |admins_manage| %>
-    <%= render admins_manage %>
-    <p>
-      <%= link_to "Show this manage", admins_manage %>
-    </p>
-  <% end %>
-</div>
+<h2 class="manage-title--sub">トップ</h2>
 
-<%= link_to "New manage", new_admins_manage_path %>
+<main class="manage-main">
+  <ul class="manage-parts">
+    <li class="manage-list"><a href="manage" class="manage-list--item">会員管理</a></li>
+    <li class="manage-list"><a href="manage" class="manage-list--item">注文管理</a></li>
+    <li class="manage-list"><a href="manage" class="manage-list--item">商品管理</a></li>
+  </ul>
+</main>

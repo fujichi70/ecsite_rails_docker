@@ -1,4 +1,4 @@
-<%= form_with(model: admins_product) do |form| %>
+<%= form_with model: @admins_products do |form| %>
   <% if admins_product.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(admins_product.errors.count, "error") %> prohibited this admins_product from being saved:</h2>
@@ -11,7 +11,23 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.submit %>
-  </div>
+    <div>
+        <%= form.label :商品名 %>
+        <%= form.text_field :product, autofocus: true, class: "input-area", value: "#{@admins_product.product}" %>
+    </div>
+    <div>
+        <%= form.label :商品説明 %>
+        <%= form.text_field :product_description, autofocus: true, class: "input-area", value: "#{@admins_product.product_description}" %>
+    </div>
+    <div>
+        <%= form.label :商品価格 %>
+        <%= form.text_field :product_price, autofocus: true, class: "input-area", value: "#{@admins_product.product_price}" %>
+    </div>
+    <div>
+        <%= form.label :商品在庫 %>
+        <%= form.text_field :product_quantity, autofocus: true, class: "input-area", value: "#{@admins_product.product_quantity}" %>
+    </div>
+    <div class="btn-box">
+      <%= form.submit class: "btn" %>
+    </div>
 <% end %>

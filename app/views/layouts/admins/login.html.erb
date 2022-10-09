@@ -5,18 +5,20 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_importmap_tags %>
   </head>
   <body>
     <header>
+      <div><%= image_tag 'logo.png' %></div>
       <% if admin_signed_in? %>
         <div class="header-box">
           <h1 class="top-title">管理者画面</h1>
           <nav>
-            <ul class="header-menu">
-              <li class="header-menu--list"><a href="/">ホーム</a></li>
-              <%# <li class="header-menu--list"><a href="dones" data-turbo=false>Done List</a></li> %>
+            <ul class="admin-parts">
+              <li class="admin-list"><a href="admin" class="admin-list--item">会員管理</a></li>
+              <li class="admin-list"><a href="admin" class="admin-list--item">注文管理</a></li>
+              <li class="admin-list"><%= link_to "商品管理", admins_products_path %></li>
             </ul>
           </nav>
         </div>

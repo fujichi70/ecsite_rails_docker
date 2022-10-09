@@ -36,6 +36,10 @@ gem "devise"
 #devise日本語化
 gem 'devise-i18n'
 
+# 画像アップロード
+gem 'carrierwave'
+gem 'mini_magick'
+
 gem 'action_args'
 
 # Use Redis adapter to run Action Cable in production
