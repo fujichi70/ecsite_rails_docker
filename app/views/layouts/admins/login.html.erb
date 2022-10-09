@@ -16,7 +16,7 @@
           <h1 class="top-title">管理者画面</h1>
           <nav>
             <ul class="admin-parts">
-              <li class="admin-list"><a href="admin" class="admin-list--item">会員管理</a></li>
+              <li class="admin-list"><%= link_to "会員管理", admins_readusers_path %></li>
               <li class="admin-list"><a href="admin" class="admin-list--item">注文管理</a></li>
               <li class="admin-list"><%= link_to "商品管理", admins_products_path %></li>
             </ul>
