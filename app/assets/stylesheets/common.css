@@ -53,7 +53,6 @@ a {
 /* メイン画像 */
 .main-visual {
 	max-width: 100%;
-	height: 100vh;
 	object-fit: cover;
 }
 
@@ -114,3 +113,106 @@ a {
 		font-size: 12px;
 		color: rgba(212,225,214,1);
 	}
+
+/* ログアウト（共通） */
+.logout {
+    padding: 0 10px;
+    color: #707070;
+}
+
+/* メッセージ欄（共通） */
+.notice {
+    color: #00b126;
+    padding: 10px 0;
+    text-align: center;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    padding: 5px 15px;
+    background-color: #fff;
+    /* border: 1px solid #00b126; */
+}
+
+.alert {
+    color: #d10000;
+    padding: 10px 0;
+    text-align: center;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    padding: 5px 15px;
+    background-color: #fff;
+    /* border: 1px solid #d10000; */
+}
+
+/* ボタン（共通） */
+.btn-box {
+  margin: 20px 0;
+}
+
+.btn {
+    border: 1px solid rgba(88,127,92,1);
+    background-color: #fff;
+    color: rgba(88,127,92,1);
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    border: none;
+    background-color: rgba(88,127,92,1);
+    color: #fff;
+}
+
+/* 戻るボタン（共通） */
+.back-btn {
+    border: 1px solid #707070;
+    background-color: #fff;
+    color: #707070;
+}
+
+.back-btn:hover {
+    background-color: #707070;
+    color: #fff;
+}
+
+/* 削除ボタン（共通） */
+.delete-btn {
+    border: 1px solid #d10000;
+    background-color: #fff;
+    color: #d10000;
+}
+
+.delete-btn:hover {
+    background-color: #d10000;
+    color: #fff;
+}
+
+/* テーブル（共通） */
+
+table {
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #cfcfcf;
+}
+
+th,td {
+  border-collapse: collapse;
+  border: 1px solid #707070;
+  padding: 10px;
+}
+
+.unit {
+  text-align: right;
+}
+
+.quantity-unit {
+  margin-left: 10px;
+}

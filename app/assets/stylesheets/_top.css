@@ -1,0 +1,10 @@
+.main-text01 {
+	position: absolute;
+	right: 20%;
+	top: 20%;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Segoe Print;
+	font-size: 57px;
+	color: rgba(88,127,92,1);
+}

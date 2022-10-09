@@ -13,3 +13,12 @@
 		password: "password123"
 	)
 end
+
+5.times do |n|
+	Product.create!(
+		product: "product#{n + 1}",
+		product_description: "product#{n + 1}です",
+		product_price: "#{n + 1}00",
+		product_quantity: "#{n + 1}"
+	)
+end

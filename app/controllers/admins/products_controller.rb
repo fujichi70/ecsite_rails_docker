@@ -3,48 +3,61 @@ class Admins::ProductsController < Admins::ApplicationController
 
   # GET /admins/products or /admins/products.json
   def index
-    @admins_products = Product.all
+    @admins_products = Product.order(created_at: :ASC)
   end
 
   # GET /admins/products/1 or /admins/products/1.json
-  def show
+  def show(id:)
+    @admins_product = Product.find(id)
   end
-
+  
   # GET /admins/products/new
-  def new
+  def new(product: nil, product_description: nil, product_price: nil, product_quantity: nil, image: nil)
     @admins_product = Product.new
   end
 
   # GET /admins/products/1/edit
-  def edit
-  end
+  def edit(id:)
+    @admins_product = Product.find(id)
 
+  end
+  
   # POST /admins/products or /admins/products.json
   def create
     @admins_product = Product.new(admins_product_params)
-
-    respond_to do |format|
-      if @admins_product.save
-        format.html { redirect_to admins_product_url([:admins, @admins_product]), notice: "Product was successfully created." }
-        format.json { render :show, status: :created, location: @admins_product }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @admins_product.errors, status: :unprocessable_entity }
-      end
+    if @admins_product.save
+      return redirect_to admins_products_path, notice: "登録しました。"
+    else
+      render "new"
     end
+
+    # respond_to do |format|
+    #   if @admins_product.save
+    #     format.html { redirect_to admins_product_url([:admins, @admins_product]), notice: "Product was successfully created." }
+    #     format.json { render :show, status: :created, location: @admins_product }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @admins_product.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /admins/products/1 or /admins/products/1.json
-  def update
-    respond_to do |format|
-      if @admins_product.update(admins_product_params)
-        format.html { redirect_to admins_product_url(@admins_product), notice: "Product was successfully updated." }
-        format.json { render :show, status: :ok, location: @admins_product }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @admins_product.errors, status: :unprocessable_entity }
-      end
-    end
+  def update(id:)
+    @admins_product = Product.find(id)
+    @admins_product.update(admins_product_params)
+
+    return redirect_to admins_products_path, notice: "更新しました。"
+    
+    # respond_to do |format|
+    #   if @admins_product.update(admins_product_params)
+    #     format.html { redirect_to admins_product_url(@admins_product), notice: "Product was successfully updated." }
+    #     format.json { render :show, status: :ok, location: @admins_product }
+    #   else
+    #     format.html { render :edit, status: :unprocessable_entity }
+    #     format.json { render json: @admins_product.errors, status: :unprocessable_entity }
+    #   end
+
   end
 
   # DELETE /admins/products/1 or /admins/products/1.json
@@ -64,7 +77,13 @@ class Admins::ProductsController < Admins::ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    # def admins_product_params
+    #   params.fetch(:admins_product, {})
+    # end
+
     def admins_product_params
-      params.fetch(:admins_product, {})
+      params.permit(:product, :product_description, :product_price, :product_quantity, :image)
     end
+
+    
 end

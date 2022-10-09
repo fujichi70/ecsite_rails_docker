@@ -2,13 +2,34 @@
 
 <h1>Products</h1>
 
-<div id="admins_products">
-  <% @admins_products.each do |admins_product| %>
-    <%= render admins_product %>
-    <p>
-      <%= link_to "Show this product", admins_product %>
-    </p>
-  <% end %>
+<div class="btn-box">
+<%= link_to "New product", new_admins_product_path, class: "btn" %>
 </div>
 
-<%= link_to "New product", new_admins_product_path %>
+<div id="admins_products">
+    <table>
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>商品説明</th>
+          <th>商品価格</th>
+          <th>商品在庫数</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @admins_products.each do |admins_product| %>
+        <tr>
+          <td><%= admins_product.product %></td>
+          <td><%= admins_product.product_description %></td>
+          <td class="unit"><%= number_to_currency(admins_product.product_price, unit: "¥", format: "%u %n") %></td>
+          <td class="unit"><%= admins_product.product_quantity %><span class="quantity-unit">個</span></td>
+          <td>
+            <%= link_to "商品詳細", admins_product_path(admins_product.id), class: "btn" %>
+          </td>
+        </tr>
+        <% end %>
+      </body>
+    </table>
+</div>
+

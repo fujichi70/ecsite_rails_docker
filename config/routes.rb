@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :admins do
+    get 'manage', to: 'manages#index'
     resources :products
   end
   
