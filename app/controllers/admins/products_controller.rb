@@ -12,7 +12,8 @@ class Admins::ProductsController < Admins::ApplicationController
     @admins_product = Product.new
   end
 
-  def edit
+  def edit(id:)
+    @admins_products = Product.find(id)
   end
   
   def create
