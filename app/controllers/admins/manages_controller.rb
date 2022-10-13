@@ -3,7 +3,7 @@ class Admins::ManagesController < ApplicationController
 
   # GET /admins/manages or /admins/manages.json
   def index
-    @admins_manages = Admins::Manage.all
+    @admins_manages = User.all
   end
 
   # GET /admins/manages/1 or /admins/manages/1.json

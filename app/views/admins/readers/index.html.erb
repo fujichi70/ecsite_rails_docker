@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>会員情報一覧</h1>
+
+<div id="admins_readers">
+    <table class="user-list--table">
+      <tr>
+        <th>ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>電話番号</th>
+        <th></th>
+      </tr>
+  <% @users.each do |u| %>
+      <tr>
+        <td><%= u.id %></td>
+        <td><%= u.name %></td>
+        <td><%= u.email %></td>
+        <% u.addresses.each do |a| %>
+          <td><%= a.zip %></td>
+          <td><%= a.address %></td>
+          <td><%= u.phone_number %></td>
+        <% end %>
+        <td class="btn-box">
+          <%= link_to "詳細", admins_reader_path(u.id), class: "btn" %>
+        </td>
+      </tr>
+  <% end %>
+    </table>
+</div>
+
+<div class="btn-box">
+  <%= link_to '管理画面に戻る', admins_manage_path, class: "btn back-btn"  %>
+</div>

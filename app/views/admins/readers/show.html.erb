@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+
+<% @user.each do |u| %>
+<h1 class="admin-title"><%= u.name %>さんの会員情報</h1>
+
+<div id="admins_readers">
+    <table class="user-list--table">
+      <tr>
+        <th>ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>電話番号</th>
+      </tr>
+      <tr>
+        <td><%= u.id %></td>
+        <td><%= u.name %></td>
+        <td><%= u.email %></td>
+        <% u.addresses.each do |a| %>
+          <td><%= a.zip %></td>
+          <td><%= a.address %></td>
+          <td><%= u.phone_number %></td>
+        <% end %>
+      </tr>
+    </table>
+        <% end %>
+</div>
+
+<div class="btn-box">
+  <%= link_to '戻る', :back, class: "btn back-btn"  %>
+</div>
