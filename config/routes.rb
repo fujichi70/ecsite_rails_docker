@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'manage', to: 'manages#index'
     resources :products
     resources :readers, only:[:index, :show]
+    resources :orders, only:[:index, :show, :edit]
   end
 
   devise_for :admins, controllers: {
