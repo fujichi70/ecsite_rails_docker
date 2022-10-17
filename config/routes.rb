@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     resources :readers, only:[:index, :show]
     resources :orders, only:[:index, :show, :edit]
   end
+  
+  namespace :users do
+    get 'shop', to: 'shops#index'
+    resources :address_registrations
+  end
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
@@ -17,6 +22,7 @@ Rails.application.routes.draw do
     sessions:      'users/sessions',
     passwords:     'users/passwords',
     registrations: 'users/registrations'
+    
   }
   
 end

@@ -1,7 +1,7 @@
 <div class="signin-box">
   <div class="signin-inner">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <h1 class="signin-title">ログイン</h1>
+      <h1 class="signin-title">管理者ログイン</h1>
       <div class="signin-number">
         <%= f.label :admin_number, "管理者番号" %><br />
         <%= f.text_field :admin_number, autofocus: true, autocomplete: "admin_number" %>

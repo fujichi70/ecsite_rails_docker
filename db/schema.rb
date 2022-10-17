@@ -15,11 +15,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_135414) do
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "zip", null: false
+    t.bigint "user_id"
+    t.string "zip", default: "", null: false
     t.string "address", default: "", null: false
+    t.string "phone", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -65,7 +67,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_135414) do
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "phone_number", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

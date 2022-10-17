@@ -5,6 +5,7 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          authentication_keys: [:admin_number]
 
+  # 認証で管理者番号を使用する
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if admin_number = conditions.delete(:admin_number)

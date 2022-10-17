@@ -2,5 +2,3 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "product_images"
-import jquery from "jquery";
-window.$ = window.jQuery = jquery;
