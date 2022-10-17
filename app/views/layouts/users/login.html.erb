@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>F Organic</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <header>
+      <div><%= image_tag 'logo.png' %></div>
+      <% if admin_signed_in? %>
+        <div class="header-box">
+          <h1 class="admin-title">管理者画面</h1>
+          <nav>
+            <ul class="admin-parts">
+              <li class="admin-list"><%= link_to "会員管理", admins_readers_path %></li>
+              <li class="admin-list"><%= link_to "注文管理", admins_orders_path %></li>
+              <li class="admin-list"><%= link_to "商品管理", admins_products_path %></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="user-action">
+            <%= link_to 'Logout', 
+              destroy_admin_session_path,
+              class: 'logout',
+              method: :delete
+            %>
+        </div>
+    <% end %>
+    </header>
+
+  <% if notice %>
+    	<p class="notice"><%= notice %></p>
+	<% end %>
+	<% if alert %>
+    	<p class="alert"><%= alert %></p>
+	<% end %>
+ 
+	
+    <%= yield %>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

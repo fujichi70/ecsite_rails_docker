@@ -1,0 +1,2 @@
+module Users::AddressRegistrationsHelper
+end
