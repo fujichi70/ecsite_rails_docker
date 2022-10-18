@@ -21,7 +21,7 @@
         <% u.addresses.each do |a| %>
           <td><%= a.zip %></td>
           <td><%= a.address %></td>
-          <td><%= u.phone_number %></td>
+          <td><%= u.phone %></td>
         <% end %>
         <td class="btn-box">
           <%= link_to "詳細", admins_reader_path(u.id), class: "btn" %>

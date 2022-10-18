@@ -15,10 +15,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_135414) do
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.bigint "user_id"
     t.string "zip", default: "", null: false
     t.string "address", default: "", null: false
     t.string "phone", default: "", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
