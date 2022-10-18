@@ -6,18 +6,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   # def new
-  #   super
+    # super
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    @user = User.new(address_params)
+    @user.addresses.build
+    @user.save
+  end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+    @user = 
+  end
 
   # PUT /resource
   # def update
@@ -59,7 +63,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  def after_sign_up_path_for(resource)
-         new_users_address_registration_path
-  end
+
+  private
+    def address_params
+      params.permit(:sign_up, keys:[:admin_number, :user_id, :name, :email, :password, :password_confirmation , address_attributes: [:zip, :address, :phone] ])
+    end
+
+    def after_sign_up_path_for(resource)
+      root_path
+    end
 end

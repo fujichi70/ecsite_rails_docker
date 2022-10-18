@@ -25,8 +25,23 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <%= f.fields_for :address do |f| %>
+    <div>
+        <%= f.label :郵便番号 %>
+        <%= f.text_field :zip, autofocus: true, class: "input-area" %>
+    </div>
+    <div>
+        <%= f.label :住所 %>
+        <%= f.text_field :address, autofocus: true, class: "input-area" %>
+    </div>
+    <div>
+        <%= f.label :電話番号 %>
+        <%= f.text_field :phone, autofocus: true, class: "input-area" %>
+    </div>
+  <% end %>
+
   <div class="actions">
-    <%= f.submit "住所登録へ" %>
+    <%= f.submit "アカウント登録" %>
   </div>
 <% end %>
 
