@@ -216,3 +216,12 @@ th,td {
 .quantity-unit {
   margin-left: 10px;
 }
+
+/* メニューバー（PC） */
+.pc-menu--parts {
+  display: flex;
+  flex-direction: space-around;
+  align-items: center;
+}
+
+/* メニューバー（SP） */

@@ -5,28 +5,36 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
+  def new
     # super
-  # end
-
+    @user = User.new
+    @addresses = @user.addresses.build
+  end
+  
   # POST /resource
   def create
     super
-    @user = User.new(address_params)
+    @user = User.new(user_params)
     @user.addresses.build
     @user.save
   end
-
+  
   # GET /resource/edit
   def edit
-    super
-    @user = 
+    @user = User.find(current_user.id)
   end
-
+  
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @user = User.find(current_user.id)
+    logger.debug(@user)
+    @user.addresses.where(user_id: current_user.id)
+    if @user.update(user_params)
+      redirect_to root_path, notice: '更新しました'
+    else
+      render :edit
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -65,11 +73,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   private
-    def address_params
-      params.permit(:sign_up, keys:[:admin_number, :user_id, :name, :email, :password, :password_confirmation , address_attributes: [:zip, :address, :phone] ])
-    end
 
-    def after_sign_up_path_for(resource)
-      root_path
-    end
+  def user_params
+    params.permit(:sign_up, keys: [:name, addresses_attributes: [:user_id, :zip, :address, :phone]])
+  end
 end
