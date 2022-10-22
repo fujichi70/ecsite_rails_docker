@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   
   namespace :users do
     get 'shop', to: 'shops#index'
-    resources :address_registrations
   end
 
   devise_for :admins, controllers: {

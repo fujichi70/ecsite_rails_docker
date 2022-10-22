@@ -5,38 +5,39 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "input-area" %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-area" %>
   </div>
 
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
+    <% end %>
+    <br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "input-area" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input-area" %>
   </div>
 
-  <%= f.fields_for :address do |f| %>
+  <%= f.fields_for :addresses do |a| %>
     <div>
-        <%= f.label :郵便番号 %>
-        <%= f.text_field :zip, autofocus: true, class: "input-area" %>
+        <%= a.label :郵便番号 %>
+        <%= a.text_field :zip, autofocus: true, class: "input-area" %>
     </div>
     <div>
-        <%= f.label :住所 %>
-        <%= f.text_field :address, autofocus: true, class: "input-area" %>
+        <%= a.label :住所 %>
+        <%= a.text_field :address, autofocus: true, class: "input-area" %>
     </div>
     <div>
-        <%= f.label :電話番号 %>
-        <%= f.text_field :phone, autofocus: true, class: "input-area" %>
+        <%= a.label :電話番号 %>
+        <%= a.text_field :phone, autofocus: true, class: "input-area" %>
     </div>
   <% end %>
 
