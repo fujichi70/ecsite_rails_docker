@@ -27,15 +27,22 @@ class CartsController < ApplicationController
   # end
 
   # カート内アイテムの表示
-  def my_cart
+  def index
     @carts = Cart.includes(:product)
     @total = @carts.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
   # アイテムの追加
   def add_cart(product_id: nil, quantity: nil)
-    cart = Cart.find_by(product_id: product_id) || Cart.build(product_id: product_id)
+    cart= Cart.build
+    cart.product_id = Product.find_by(product_id: product_id)
     cart.quantity += quantity.to_i
+    if current_user?
+      cart.user_id = current_user.id
+    end
+    if cart.save?
+      return redirect_to product_path, notice: 'カートに追加しました'
+    end
   end
 
   # アイテムの更新
@@ -45,12 +52,8 @@ class CartsController < ApplicationController
 
   # アイテムの削除
   def destroy
-    if @cart.destroy
-      flash[:notice] = 'カート内のギフトが削除されました'
-    else
-      flash[:alert] = '削除に失敗しました'
-    end
-    redirect_to my_cart_path
+    @cart.destroy
+    redirect_to cart_path
   end
 
   private

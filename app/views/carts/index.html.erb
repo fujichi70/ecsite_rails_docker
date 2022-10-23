@@ -4,15 +4,34 @@
 
 <div id="carts">
 <% if @carts.present? %>
+    <%= form_with @cart do |f| %>
+      <table>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>購入数</th>
+            <th>商品価格</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
   <% @carts.each do |cart| %>
-    <%= render cart %>
-    <p>
-      <%= link_to "Show this cart", cart %>
-    </p>
+          <tr>
+          <% link_to product_path(cart.product_id) do %>
+            <td><%= cart.product %></td>
+            <td class="unit"><%= cart.quantity %><span class="quantity-unit">個</span></td>
+            <td class="unit"><%= number_to_currency(cart.product_price, unit: "¥", format: "%u %n") %></td>
+            <td>
+              <%= link_to "削除", cart_destroy_path(cart.id), class: "btn" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+    </table>
+    <% end %>
+
   <% end %>
 <% else %>
   <p>カートは空です</p>
 <% end %>
 </div>
-
-<%= link_to "New cart", new_cart_path %>
