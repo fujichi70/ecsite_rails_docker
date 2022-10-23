@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get 'shop', to: 'shops#index'
   end
 
+  resources :carts
+
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',

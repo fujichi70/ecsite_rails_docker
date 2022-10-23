@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :addresses, inverse_of: :user
+  has_many :carts, dependent: :destroy
   accepts_nested_attributes_for :addresses, allow_destroy: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

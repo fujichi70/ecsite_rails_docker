@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
 	mount_uploader :image, ImageUploader
+	has_many :carts, dependent: :destroy
 
 	validates :product, presence: true
 	validates :product_description, presence: true

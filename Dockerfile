@@ -4,6 +4,7 @@ WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
+ENV TZ Asia/Tokyo
 # COPY . /myapp
 
 COPY entrypoint.sh /usr/bin/
