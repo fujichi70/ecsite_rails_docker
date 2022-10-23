@@ -3,12 +3,19 @@
 <h1>Products</h1>
 
 <div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
+  <% @products.each do |p| %>
+    <div>画像が入ります</div>
+	<div>
+    <%= link_to product_path(p.id) do %>
+		<ul class="product-parts">
+			<li class="product-list"><%= p.product %></li>
+			<li class="product-list"><%= p.product_description %></li>
+			<li class="product-list"><%= number_to_currency(p.product_price, unit: "¥", format: "%u %n") %></li>
+		</ul>
+    <% end %>
+			<% if p.product_quantity == 0 %>
+				<p>欠品中</p>
+			<% end %>
+	</div>
   <% end %>
 </div>
-
-<%= link_to "New product", new_product_path %>

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
 
   resources :carts
+  post 'add_cart', to: 'carts#add_cart'
+  resources :products
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
